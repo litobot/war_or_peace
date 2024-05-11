@@ -24,8 +24,11 @@ class Deck
   def remove_card
     cards.shift
   end
+
+  def add_card(card)
+    cards.push(card)
+  end
 end
 
-# remove_card: this method will remove the top card from the deck
 
 # add_card: this method will add one card to the bottom (end) of the deck
