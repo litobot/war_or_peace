@@ -12,19 +12,13 @@ class Deck
   end
 
   def high_ranking_cards
-    # I want to return any element from the @cards array that has a rank
-      # of 11 or higher.
-    # example = []
-    # cards.each do |card|
-    #   if card.rank >= 11
-    #     example << card
-    #   end
-    # end
-    # example
-
     cards.select do |card|
       card.rank >= 11
     end
+  end 
+
+  def percent_high_ranking
+    ((high_ranking_cards.length.to_f / cards.length) * 100).round(2)
   end
 end
 
