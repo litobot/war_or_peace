@@ -10,6 +10,22 @@ class Deck
   def rank_of_card_at(index)
     cards[index].rank
   end
+
+  def high_ranking_cards
+    # I want to return any element from the @cards array that has a rank
+      # of 11 or higher.
+    # example = []
+    # cards.each do |card|
+    #   if card.rank >= 11
+    #     example << card
+    #   end
+    # end
+    # example
+
+    cards.select do |card|
+      card.rank >= 11
+    end
+  end
 end
 
 
