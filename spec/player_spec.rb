@@ -32,20 +32,21 @@ RSpec.describe Player do
 
     expect(player.deck).to eq(deck)
   end
+  
+  it "has not lost yet" do
+    card1 = Card.new(:diamond, 'Queen', 12)
+    card2 = Card.new(:spade, '3', 3)  
+    card3 = Card.new(:heart, 'Ace', 14)
+
+    deck = Deck.new([card1, card2, card3])
+
+    player = Player.new("Clarisa", deck)
+
+    expect(player.has_lost?).to be(false)
+  end
+
 
 end
-
-  # pry(main)> deck = Deck.new([card1, card2, card3])
-  # #=> #<Deck:0x007f9cc396bdf8 @cards=[#<Card:0x007f9cc3a73a98...>, #<Card:0x007f9cc3a03720...>, #<Card:0x007f9cc3a44c98...>]>
-
-  # pry(main)> player = Player.new('Clarisa', deck)
-  # #=> #<Player:0x007f9cc3b4c988 @deck=#<Deck:0x007f9cc396bdf8 @cards=[#<Card:0x007f9cc3a73a98...>, #<Card:0x007f9cc3a03720...>, #<Card:0x007f9cc3a44c98...>]>, @name="Clarisa">
-
-  # pry(main)> player.name
-  # #=> "Clarisa"
-
-  # pry(main)> player.deck
-  # #=> #<Deck:0x007f9cc396bdf8 @cards=[#<Card:0x007f9cc3a73a98...>, #<Card:0x007f9cc3a03720...>, #<Card:0x007f9cc3a44c98...>]>
 
   # pry(main)> player.has_lost?
   # #=> false
