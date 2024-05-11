@@ -62,23 +62,26 @@ RSpec.describe Deck do
     cards = [card1, card2, card3]
   
     deck = Deck.new(cards)
-
+    
     expect(deck.percent_high_ranking).to eq(66.67)
+  end
+  
+  it "can remove a card from a deck" do
+    card1 = Card.new(:diamond, 'Queen', 12)
+    card2 = Card.new(:spade, '3', 3)  
+    card3 = Card.new(:heart, 'Ace', 14)
+    
+    cards = [card1, card2, card3]
+  
+    deck = Deck.new(cards)
+
+    expect(deck.remove_card).to eq(card1)
+    expect(deck.cards).to eq([card2, card3])
+    expect(deck.high_ranking_cards).to eq([card3])
+    expect(deck.percent_high_ranking).to eq(50.0)
   end
 
 end
-
-  # pry(main)> deck.percent_high_ranking
-  # #=> 66.67
-
-  # pry(main)> deck.remove_card
-  # #=> #<Card:0x007fbfd18490e8 @rank=12, @suit=:diamond, @value="Queen">
-
-  # pry(main)> deck.cards
-  # #=> [#<Card:0x007fbfd19f4fa0...>, #<Card:0x007fbfd18555a0...>]
-
-  # pry(main)> deck.high_ranking_cards
-  # #=> [#<Card:0x007fbfd18555a0...>]
 
   # pry(main)> deck.percent_high_ranking
   # #=> 50.0
