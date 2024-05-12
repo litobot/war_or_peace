@@ -29,6 +29,3 @@ class Deck
     cards.push(card)
   end
 end
-
-
-# add_card: this method will add one card to the bottom (end) of the deck
