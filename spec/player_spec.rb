@@ -69,7 +69,6 @@ RSpec.describe Player do
     expect(player.has_lost?).to be(true)
 
     expect(player.deck).to eq(deck)
-    # update #has_lost method to respond to emptying the deck
   end
 
 end
