@@ -34,12 +34,37 @@ class Turn
   end
 
 
-  # def winner
+  def winner
+    # if the turn has a type of :basic
+      # it will return whichever player has a higher rank_of_card_at(0)
+        # get rank of card @ index [0] for each player
+          # figure out which one is higher
+            # return that player as winner
 
-  # end
-end
-
+      if type == :basic
+        player_ranks_array = [player1.deck.rank_of_card_at(0), player2.deck.rank_of_card_at(0)]
+        winning_index = player_ranks_array.find_index(player_ranks_array.max)
+        # Line 46 is finding the index number of highest rank in the player_ranks_array
+        # Line 45 is an array of two ranks
+          # One of those ranks belongs to player1
+            # And it is in position 0
+          # The other rank belongs to player2
+            # And it is in position 1
+        if winning_index == 0
+          @player1
+        elsif winning_index == 1
+          @player2
+        end
+      end
+    end
+  end
+  
+  # this #max returns the higher rank between player1 & player2's deck
+  # I need to have a way to know who's deck that higher card came from
+  # I need to compare the card with the highest rank as returned from #max including
+    # it's associated suit and value against each player's deck
+      # if all attributes match a player's deck, that affiliated player is returned
+  
 # winner: this method will determine the winner of the turn.
-# if the turn has a type of :basic, it will return whichever player has a higher rank_of_card_at(0)
 # if the turn has a type of :war the winner will be whichever player has a higher rank_of_card_at(2)
 # if the turn has a type of :mutually_assured_destruction the method will return No Winner.

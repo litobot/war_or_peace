@@ -41,9 +41,9 @@ RSpec.describe Turn do
     expect(@turn.type).to eq(:basic)
   end
 
-  # it "can have a winner" do
-  #   expecting(@turn.winner).to eq(@player1)
-  # end
+  it "can have a winner" do
+    expect(@turn.winner).to eq(@player1)
+  end
 end
 
 
