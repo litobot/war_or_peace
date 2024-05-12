@@ -36,11 +36,12 @@ RSpec.describe Turn do
   it "#spoils_of_war initializes as an empty array" do
     expect(@turn.spoils_of_war).to eq([])
   end
+
+  it "has a basic turn type" do
+    expect(@turn.type).to eq(:basic)
+  end
 end
 
-
-  # pry(main)> turn.type
-  # #=> :basic
 
   # pry(main)> winner = turn.winner
   # #=> #<Player:0x007fa3edae29d0 @deck=#<Deck:0x007fa3eda472c8...>, @name="Megan">

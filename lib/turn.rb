@@ -14,4 +14,8 @@ class Turn
   def spoils_of_war
     []
   end
+
+  def type
+    :basic
+  end
 end
