@@ -44,18 +44,14 @@ RSpec.describe Turn do
   it "can have a winner" do
     expect(@turn.winner).to eq(@player1)
   end
+
+  it "collects cards in array via #spoils_of_war" do
+    @turn.pile_cards
+    expect(@turn.spoils_of_war).to eq([@card1, @card3])
+  end
+
+  
 end
-
-
-  # pry(main)> winner = turn.winner
-  # #=> #<Player:0x007fa3edae29d0 @deck=#<Deck:0x007fa3eda472c8...>, @name="Megan">
-
-  # pry(main)> turn.pile_cards
-
-  # pry(main)> turn.spoils_of_war
-  # #=> [#<Card:0x007fa3edaa0df0 @rank=11, @suit=:heart, @value="Jack">, #<Card:0x007fa3ed98d9b8 @rank=9, @suit=:heart, @value="9">]
-
-  # pry(main)> turn.award_spoils(winner)
 
   # pry(main)> player1.deck
   # #=> #<Deck:0x007fa3eda472c8 @cards=[#<Card:0x007fa3eda519a8...>, #<Card:0x007fa3edb263d8...>, #<Card:0x007fa3eda89308...>, #<Card:0x007fa3edaa0df0...>, #<Card:0x007fa3ed98d9b8...>]>
