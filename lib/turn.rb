@@ -15,20 +15,12 @@ class Turn
   end
 
   def type
-    # what do i have access to?
-      # player, deck, cards, figure out rank at an index
-        # player
-          # deck
-            # cards, method called rank_of_cards_at(index)
-              # suit, value, rank
-      # player1.deck.cards, player1.deck.rank_of_card_at(index)
-      # player2.deck.cards, player2.deck.rank_of_card_at(index)
-    if player1.deck.rank_of_card_at(0) != player2.deck.rank_of_card_at(0)
-      :basic
+    if player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) && player1.deck.rank_of_card_at(2) == player2.deck.rank_of_card_at(2)
+      :mutually_assured_destruction
     elsif player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0)
       :war
-    elsif player1.deck.rank_of_card_at(0) == player2.deck.rank_of_card_at(0) && player1.deck.rank_of_card_at(2) == player2.deck.rank_of_card_at(2)
-      :mutually_assured_destruction
+    elsif player1.deck.rank_of_card_at(0) != player2.deck.rank_of_card_at(0)
+        :basic
     end
   end
 
@@ -51,7 +43,11 @@ class Turn
         elsif winning_index == 1
           @player2
         end
+        
+      elsif type == :mutually_assured_destruction
+      "No Winner"
       end
+      
 
     end
 
@@ -63,6 +59,11 @@ class Turn
         3.times do
           spoils_of_war << player1.deck.remove_card
           spoils_of_war << player2.deck.remove_card
+        end
+      elsif type == mutually_assured_destruction
+        3.times do
+          player1.deck.remove_card
+          player2.deck.remove_card
         end
       end
     end
