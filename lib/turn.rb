@@ -40,14 +40,24 @@ class Turn
             # return that player as winner
 
       if type == :basic
-        player_ranks_array = [player1.deck.rank_of_card_at(0), player2.deck.rank_of_card_at(0)]
-        winning_index = player_ranks_array.find_index(player_ranks_array.max)
-        # Line 46 is finding the index number of highest rank in the player_ranks_array
-        # Line 45 is an array of two ranks
+        basic_ranks_array = [player1.deck.rank_of_card_at(0), player2.deck.rank_of_card_at(0)]
+        winning_index = basic_ranks_array.find_index(basic_ranks_array.max)
+        # Line 44 is finding the index number of highest rank in the basic_ranks_array
+        # Line 43 is an array of two ranks
         # One of those ranks belongs to player1
-        # And it is in position 0
+          # And it is in position 0
         # The other rank belongs to player2
-        # And it is in position 1
+          # And it is in position 1
+
+        if winning_index == 0
+          @player1
+        elsif winning_index == 1
+          @player2
+        end
+
+      elsif type == :war
+        war_ranks_array = [player1.deck.rank_of_card_at(2), player2.deck.rank_of_card_at(2)]
+        winning_index = war_ranks_array.find_index(war_ranks_array.max)
         if winning_index == 0
           @player1
         elsif winning_index == 1
@@ -83,16 +93,16 @@ class Turn
 # if the turn has a type of :mutually_assured_destruction the method will return No Winner.
 
 
-def winner
-  case @turn
-  when :basic
-    return @player1 if rank_of_card_at(0, @player1) > rank_of_card_at(0, @player2)
-    return @player2 if rank_of_card_at(0, @player1) < rank_of_card_at(0, @player2)
-  when :war
-    return @player1 if rank_of_card_at(2, @player1) > rank_of_card_at(2, @player2)
-    return @player2 if rank_of_card_at(2, @player1) < rank_of_card_at(2, @player2)
-  when :mutually_assured_destruction
-    return "No Winner"
-  end
-  nil # Default case, if the turn type is not recognized or if it's a tie
-end
+# def winner
+#   case @turn
+#   when :basic
+#     return @player1 if rank_of_card_at(0, @player1) > rank_of_card_at(0, @player2)
+#     return @player2 if rank_of_card_at(0, @player1) < rank_of_card_at(0, @player2)
+#   when :war
+#     return @player1 if rank_of_card_at(2, @player1) > rank_of_card_at(2, @player2)
+#     return @player2 if rank_of_card_at(2, @player1) < rank_of_card_at(2, @player2)
+#   when :mutually_assured_destruction
+#     return "No Winner"
+#   end
+#   nil # Default case, if the turn type is not recognized or if it's a tie
+# end
