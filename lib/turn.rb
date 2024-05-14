@@ -33,22 +33,10 @@ class Turn
   end
 
   def winner
-    # if the turn has a type of :basic
-      # it will return whichever player has a higher rank_of_card_at(0)
-        # get rank of card @ index [0] for each player
-          # figure out which one is higher
-            # return that player as winner
 
       if type == :basic
         basic_ranks_array = [player1.deck.rank_of_card_at(0), player2.deck.rank_of_card_at(0)]
         winning_index = basic_ranks_array.find_index(basic_ranks_array.max)
-        # Line 44 is finding the index number of highest rank in the basic_ranks_array
-        # Line 43 is an array of two ranks
-        # One of those ranks belongs to player1
-          # And it is in position 0
-        # The other rank belongs to player2
-          # And it is in position 1
-
         if winning_index == 0
           @player1
         elsif winning_index == 1
@@ -68,8 +56,15 @@ class Turn
     end
 
     def pile_cards
-      spoils_of_war << player1.deck.remove_card
-      spoils_of_war << player2.deck.remove_card
+      if type == :basic
+        spoils_of_war << player1.deck.remove_card
+        spoils_of_war << player2.deck.remove_card
+      elsif type == :war
+        3.times do
+          spoils_of_war << player1.deck.remove_card
+          spoils_of_war << player2.deck.remove_card
+        end
+      end
     end
     
     def award_spoils(winner)
