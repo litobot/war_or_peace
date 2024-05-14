@@ -82,3 +82,17 @@ class Turn
 # if the turn has a type of :war the winner will be whichever player has a higher rank_of_card_at(2)
 # if the turn has a type of :mutually_assured_destruction the method will return No Winner.
 
+
+def winner
+  case @turn
+  when :basic
+    return @player1 if rank_of_card_at(0, @player1) > rank_of_card_at(0, @player2)
+    return @player2 if rank_of_card_at(0, @player1) < rank_of_card_at(0, @player2)
+  when :war
+    return @player1 if rank_of_card_at(2, @player1) > rank_of_card_at(2, @player2)
+    return @player2 if rank_of_card_at(2, @player1) < rank_of_card_at(2, @player2)
+  when :mutually_assured_destruction
+    return "No Winner"
+  end
+  nil # Default case, if the turn type is not recognized or if it's a tie
+end
