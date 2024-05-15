@@ -46,7 +46,7 @@ class Turn
 
       elsif type == :mutually_assured_destruction
       "No Winner"
-      
+
       end
     end
 
@@ -68,8 +68,6 @@ class Turn
     end
     
     def award_spoils(winner)
-      # this method will add each of the cards in the @spoils_of_war 
-      # array to the winner of the turn.
       spoils_of_war.each do |card|
         winner.deck.add_card(card)
       end
